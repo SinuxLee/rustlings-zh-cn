@@ -3,12 +3,13 @@
 // 对于这些练习，当存在Clippy警告(Clippy warnings)时，代码将无法编译。
 // 从输出中查看Clippy的建议来解决练习问题。
 
+use std::f32::consts::PI;
+
 fn main() {
     // TODO: 修复此行中的Clippy lint(检查提示)。
-    let pi = 3.14;
     let radius: f32 = 5.0;
 
-    let area = pi * radius.powi(2);
+    let area = PI * radius.powi(2);
 
     println!("The area of a circle with radius {radius:.2} is {area:.5}");
 }

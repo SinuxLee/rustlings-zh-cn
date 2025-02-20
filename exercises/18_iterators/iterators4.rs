@@ -11,6 +11,8 @@ fn factorial(num: u64) -> u64 {
     //   - 额外的变量
     // 额外挑战，不使用:
     //   - 递归
+
+    (2..=num).fold(1, |acc, x|{acc * x})
 }
 
 fn main() {

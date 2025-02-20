@@ -27,6 +27,21 @@ fn build_scores_table(results: &str) -> HashMap<&str, TeamScores> {
 
         // TODO: 使用提取出的详细信息来填充比分表。
         // 切记，球队1的进球数将是球队2的失球数。同样，球队2的进球数将是球队1的失球数。
+        scores.entry(team_1_name).and_modify(|team_scores| {
+            team_scores.goals_scored += team_1_score;
+            team_scores.goals_conceded += team_2_score;
+        }).or_insert(TeamScores{
+            goals_scored: team_1_score,
+            goals_conceded: team_2_score,
+        });
+
+        scores.entry(team_2_name).and_modify(|team_scores| {
+            team_scores.goals_scored += team_2_score;
+            team_scores.goals_conceded += team_1_score;
+        }).or_insert(TeamScores{
+            goals_scored: team_2_score,
+            goals_conceded: team_1_score,
+        });
     }
 
     scores
